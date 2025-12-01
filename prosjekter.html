@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+
+    <!-- Viktig for mobilvisning -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Portfolio - Roy Svarstad</h1>
+
+    <nav class="navbar">
+        <!-- Hamburger-knapp (til høyre) -->
+        <button class="hamburger" aria-label="Åpne meny" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Selve menyen -->
+        <ul class="meny">
+            <li><a href="index.html">Hjem</a></li>
+			 <li><a href="prosjekter.html">Prosjekter</a></li>
+            <li><a href="om_meg.html">Om meg</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <main>
+    <h3>Prosjekter</h3> 
+
+    <section class="bilde-galleri">
+        <div class="bilde-boks">
+            <img src="images/mobile.jpg" alt="webdesign">
+        </div>
+        <div class="bilde-boks">
+            <img src="images/drone.jpg" alt="drone">
+        </div>
+        <div class="bilde-boks">
+            <img src="images/filming.jpg" alt="filming">
+        </div>
+    </section>
+</main>
+
+    <!-- Enkel JavaScript for å åpne/lukke hamburger-menyen -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const meny = document.querySelector('.meny');
+
+        hamburger.addEventListener('click', () => {
+            meny.classList.toggle('meny--open');
+
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', (!expanded).toString());
+        });
+    </script>
+</body>
+</html>

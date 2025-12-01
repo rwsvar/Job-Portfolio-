@@ -1,0 +1,230 @@
+/* ---------- GLOBALT ---------- */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(images/norway_fjords.jpg) no-repeat center center fixed;
+    background-size: cover;
+    width: 70%;
+    margin: 5% auto 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- TEKST ---------- */
+
+h1 {
+    font-family: font-family: "Bodoni Moda", "Didot", "Georgia", serif;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+	  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* #000 er fargen på streken (svart) */
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/* ---------- MAIN BOKS ---------- */
+
+main {
+    background-color: rgba(51, 51, 51, 0.6);
+    width: 98%;
+    padding: 1%;
+    margin: 0;
+	border-bottom: 1px solid orange;
+}
+
+/* ---------- NAV / MENY ---------- */
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;   /* meny/hamburger til høyre */
+    align-items: center;
+    margin:0 0 2% 0;
+    position: relative;
+}
+
+/* FULL BREDDE-MENY PÅ DESKTOP */
+.meny {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color:rgba(51, 51, 51, 0.5);
+	border-top: 1px solid orange;
+	
+ 
+}
+
+.meny li {
+    margin: 0;
+    padding: 0;
+}
+
+.meny a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+
+.meny a:hover {
+    background-color: #555;
+    opacity: 1;
+}
+
+/* ---------- HAMBURGER ---------- */
+
+.hamburger {
+    display: none;   /* kun mobil */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 5px 0;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* ANIMASJON (hamburger → X) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ---------- RESPONSIV ---------- */
+
+@media (max-width: 768px) {
+
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    /* Vis hamburger på mobil */
+    .hamburger {
+        display: block;
+        z-index: 100;
+    }
+
+    /* Mobilmeny (skjult som default) */
+    .meny {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;        /* skjult */
+        opacity: 1;
+    }
+
+    /* Vis når JS åpner meny */
+    .meny.meny--open {
+        display: flex;
+		 background-color:rgba(51, 51, 51, 1);
+    }
+
+    .meny a {
+        border-top: 1px solid #444;
+        padding: 18px;
+    }
+}
+
+/* Galleri-container */
+.bilde-galleri {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Hver boks – kvadratisk 1/1 format */
+.bilde-boks {
+    flex: 0 0 calc(33.333% - 1rem); /* 3 i bredden */
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    aspect-ratio: 1 / 1; /* ← KVADRATISK */
+}
+
+/* Bildet inni boksen */
+.bilde-boks img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;  /* fyller kvadratet, beskjærer pent */
+    transition: transform 0.3s ease;
+}
+
+/* Hover-effekt */
+.bilde-boks:hover {
+    transform: scale(1.03);
+}
+
+.bilde-boks::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(51, 51, 51, 0.35);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bilde-boks:hover::after {
+    opacity: 1;
+}
+
+.bilde-boks:hover img {
+    transform: scale(1.05);
+}
+
+/* Mobilversjon: én per rad */
+@media (max-width: 768px) {
+    .bilde-boks {
+        flex: 0 0 100%;
+    }
+}
