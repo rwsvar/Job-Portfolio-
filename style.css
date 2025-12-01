@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-    background: url(images/norway_fjords.jpg) no-repeat center center fixed;
+    background: url(norway_fjords.jpg) no-repeat center center fixed;
     background-size: cover;
     width: 70%;
     margin: 5% auto 0 auto;
@@ -228,3 +228,4 @@ main {
         flex: 0 0 100%;
     }
 }
+
